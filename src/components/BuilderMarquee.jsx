@@ -30,9 +30,9 @@ export default function BuilderMarquee() {
       alt: "Godrej Official Logo"
     },
     {
-      name: "Aparna",
-      image: "/logos/aparna.png",
-      alt: "Aparna Official Logo"
+      name: "Auro Realty",
+      image: "/logos/auro_realty.png",
+      alt: "Auro Realty Official Logo"
     }
   ];
 
