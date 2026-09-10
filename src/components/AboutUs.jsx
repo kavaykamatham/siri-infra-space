@@ -50,14 +50,14 @@ export default function AboutUs({ onOpenSiteVisit }) {
     { number: "5.0 ★", label: "Google Customer Rating" }
   ];
 
-  // Leadership & Founders Data
+  // Leadership & Founders Data with real cropped photos & professional executive presentation
   const leaders = [
     {
       roleTitle: "Founder & Managing Director",
       name: "Founder & Managing Director",
       subtitle: "Strategic Growth & Developer Partnerships",
       experience: "12+ Years in Hyderabad Real Estate",
-      avatarPlaceholder: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+      avatarImage: "/team/founder.jpg",
       bio: "Leads the overall strategic direction, corporate governance, and developer alliances for Siri Infra Space. Dedicated to pioneering a transparent, client-first property acquisition model in Hyderabad with 100% legal clarity.",
       responsibilities: [
         "High-value developer partnerships across KPHB, Hafeezpet, Kokapet & Financial District",
@@ -72,7 +72,7 @@ export default function AboutUs({ onOpenSiteVisit }) {
       name: "Co-Founder & Chief Operating Officer",
       subtitle: "Client Operations & Financial Sanctions",
       experience: "10+ Years in Property Advisory & Banking",
-      avatarPlaceholder: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80",
+      avatarImage: "/team/cofounder.jpg",
       bio: "Drives day-to-day operations, buyer relationship management, and customized property consultations. Heads the specialized home loan desk and complimentary chauffeured site visit operations across Hyderabad.",
       responsibilities: [
         "Managing client advisory, personalized consultations & tailored requirement matching",
@@ -172,21 +172,21 @@ export default function AboutUs({ onOpenSiteVisit }) {
                   {/* Top Profile Header */}
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
                     
-                    {/* Portrait Placeholder */}
-                    <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-slate-900 border-2 border-emerald-500/40 shadow-md shrink-0 group">
+                    {/* Executive Portrait Badge */}
+                    <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden bg-slate-900 border-2 border-emerald-500/50 shadow-lg shrink-0 group ring-4 ring-emerald-50">
                       <img
-                        src={leader.avatarPlaceholder}
+                        src={leader.avatarImage}
                         alt={leader.roleTitle}
-                        className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300"
                       />
-                      <div className="absolute bottom-0 inset-x-0 bg-slate-950/80 py-0.5 text-[9px] font-bold text-emerald-400 text-center uppercase tracking-wider">
-                        Leadership
+                      <div className="absolute bottom-0 inset-x-0 bg-slate-950/85 py-1 text-[9px] font-black text-emerald-400 text-center uppercase tracking-wider">
+                        Executive
                       </div>
                     </div>
 
                     {/* Name & Title */}
                     <div className="space-y-1">
-                      <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-emerald-100 text-emerald-800 uppercase tracking-wide">
+                      <span className="inline-block px-3 py-0.5 rounded-full text-[11px] font-extrabold bg-emerald-100 text-emerald-800 uppercase tracking-wide">
                         {leader.roleTitle}
                       </span>
                       <h3 className="text-xl sm:text-2xl font-black text-slate-900">
