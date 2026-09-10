@@ -2,26 +2,42 @@ import React from 'react';
 import { Sparkles } from 'lucide-react';
 
 export default function BuilderMarquee() {
-  // Exact logos provided: Urbanrise & Brigade Group
+  // Official Partner Developer Logos
   const partnerLogos = [
     {
       name: "Urbanrise",
-      sub: "An Alliance Company",
       image: "/logos/urbanrise.png",
       alt: "Urbanrise Official Logo"
     },
     {
       name: "Brigade Group",
-      sub: "Brigade Group",
       image: "/logos/brigade.png",
       alt: "Brigade Group Official Logo"
+    },
+    {
+      name: "Candeur",
+      image: "/logos/candeur.png",
+      alt: "Candeur Official Logo"
+    },
+    {
+      name: "Primark",
+      image: "/logos/primark.png",
+      alt: "Primark Official Logo"
+    },
+    {
+      name: "Godrej",
+      image: "/logos/godrej.png",
+      alt: "Godrej Official Logo"
+    },
+    {
+      name: "Aparna",
+      image: "/logos/aparna.png",
+      alt: "Aparna Official Logo"
     }
   ];
 
-  // Repeat for continuous seamless infinite loop
+  // Repeat list for continuous seamless infinite loop
   const marqueeList = [
-    ...partnerLogos,
-    ...partnerLogos,
     ...partnerLogos,
     ...partnerLogos,
     ...partnerLogos,
@@ -43,15 +59,15 @@ export default function BuilderMarquee() {
       <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-slate-50 via-slate-50/80 to-transparent z-10"></div>
       <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-slate-50 via-slate-50/80 to-transparent z-10"></div>
 
-      {/* Infinite Scrolling Track with Uploaded Official Logos */}
+      {/* Infinite Scrolling Track with Official Logos */}
       <div className="animate-marquee items-center gap-6 sm:gap-10 cursor-default">
         {marqueeList.map((item, idx) => (
           <div
             key={idx}
             className="flex items-center gap-4 px-6 py-3 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500/50 hover:scale-105 transition-all duration-300 shrink-0 h-20"
           >
-            {/* Exact Official Logo Image */}
-            <div className="h-12 w-28 flex items-center justify-center">
+            {/* Official Logo Image */}
+            <div className="h-12 w-32 flex items-center justify-center p-1">
               <img
                 src={item.image}
                 alt={item.alt}
