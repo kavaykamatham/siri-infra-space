@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Search, 
   MapPin, 
@@ -10,6 +10,7 @@ import {
   TrendingUp,
   ArrowRight
 } from 'lucide-react';
+import { properties } from '../data/properties';
 
 export default function HeroSearch({ 
   filters, 
@@ -40,25 +41,35 @@ export default function HeroSearch({
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentBgIdx((prev) => (prev + 1) % backgroundImages.length);
-    }, 5000); // changes every 5 seconds smoothly
+    }, 5000);
     return () => clearInterval(timer);
   }, [backgroundImages.length]);
 
   const categories = ['All', 'Apartments', 'Villas', 'Plots', 'Commercial'];
 
-  const localities = [
-    'All Localities',
-    'Bangalore Highway',
-    'Mumbai Highway',
-    'Srisailam Highway',
-    'Warangal Highway',
-    'Kukatpally / KPHB',
-    'Hafeezpet',
-    'Tellapur',
-    'Kokapet / Neopolis',
-    'Financial District',
-    'Bachupally'
-  ];
+  // Automated Dynamic Locality List derived from real properties + highways
+  const localities = useMemo(() => {
+    const defaultList = [
+      'All Localities',
+      'Kukatpally',
+      'Miyapur',
+      'Shad Nagar',
+      'Kondapur',
+      'Neopolis / Kokapet',
+      'Hafeezpet',
+      'Tellapur',
+      'Financial District',
+      'Bangalore Highway',
+      'Mumbai Highway',
+      'Srisailam Highway',
+      'Warangal Highway'
+    ];
+
+    // Extract unique localities from actual properties dataset
+    const propertyLocalities = properties.map(p => p.locality).filter(Boolean);
+    const combined = Array.from(new Set([...defaultList, ...propertyLocalities]));
+    return combined;
+  }, []);
 
   const budgetRanges = [
     { label: 'Any Budget', value: 'all' },
@@ -110,7 +121,7 @@ export default function HeroSearch({
           </div>
         ))}
 
-        {/* Crisp Modern Gradient Overlay (Light & Airy, yet High Contrast) */}
+        {/* Backdrop Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-950/70 backdrop-blur-[1px]"></div>
       </div>
 
@@ -131,7 +142,7 @@ export default function HeroSearch({
           </h1>
 
           <p className="text-sm sm:text-lg text-slate-100 font-medium max-w-2xl mx-auto leading-relaxed drop-shadow">
-            Verified luxury apartments, gated villas, commercial spaces, and HMDA-sanctioned open plots across Bangalore Highway, Mumbai Highway, Srisailam Highway, and Warangal Highway.
+            Verified luxury apartments, gated villas, commercial spaces, and HMDA-sanctioned open plots across Miyapur, Kukatpally, Shad Nagar, Kondapur, Neopolis, and Major Highways.
           </p>
         </div>
 
@@ -295,28 +306,34 @@ export default function HeroSearch({
               Quick Searches:
             </span>
             <button
-              onClick={() => handleQuickChip('Kukatpally / KPHB', 'Apartments', '3 BHK')}
+              onClick={() => handleQuickChip('Miyapur', 'Apartments')}
               className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 font-medium transition"
             >
-              🏢 3 BHK in KPHB
+              🏬 Primark Miyapur
             </button>
             <button
-              onClick={() => handleQuickChip('Hafeezpet', 'Apartments')}
+              onClick={() => handleQuickChip('Kukatpally', 'Apartments')}
               className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 font-medium transition"
             >
-              ⚡ Flats in Hafeezpet
+              🏢 Candeur & Godrej Kukatpally
             </button>
             <button
-              onClick={() => handleQuickChip('Tellapur', 'Villas')}
+              onClick={() => handleQuickChip('Shad Nagar', 'Apartments')}
               className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 font-medium transition"
             >
-              🏡 Villas in Tellapur
+              🌱 Urbanrise Shadnagar
             </button>
             <button
-              onClick={() => handleQuickChip('Kokapet / Neopolis', 'Apartments')}
+              onClick={() => handleQuickChip('Neopolis / Kokapet', 'Apartments')}
               className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 font-medium transition"
             >
-              💎 Kokapet High-Rise
+              💎 Brigade Neopolis
+            </button>
+            <button
+              onClick={() => handleQuickChip('Kondapur', 'Apartments')}
+              className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 font-medium transition"
+            >
+              ✨ Auro Kondapur
             </button>
           </div>
 
