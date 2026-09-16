@@ -26,26 +26,73 @@ export default function PropertyGrid({
     { id: 'Commercial', label: 'Commercial' },
   ];
 
-  // Filtering logic
+  // Smart Filtering logic
   const filtered = properties.filter((item) => {
     // Category
     if (filters.category !== 'All' && item.category !== filters.category) {
       return false;
     }
-    // Locality
-    if (filters.locality !== 'All Localities' && item.locality !== filters.locality) {
-      return false;
+
+    // Locality (Smart flexible matching for Kukatpally, Miyapur, Shadnagar, Neopolis, Kondapur, Highways, etc.)
+    if (filters.locality !== 'All Localities') {
+      const selectedLoc = filters.locality.toLowerCase();
+      const itemLoc = (item.locality || '').toLowerCase();
+      const itemLocation = (item.location || '').toLowerCase();
+      const itemTitle = (item.title || '').toLowerCase();
+
+      const isKukatpally = selectedLoc.includes('kukatpally') || selectedLoc.includes('kphb');
+      const isHafeezpetMiyapur = selectedLoc.includes('hafeezpet') || selectedLoc.includes('miyapur');
+      const isBangaloreShadnagar = selectedLoc.includes('bangalore') || selectedLoc.includes('shadnagar') || selectedLoc.includes('shad nagar');
+      const isKokapetNeopolis = selectedLoc.includes('kokapet') || selectedLoc.includes('neopolis');
+      const isKondapur = selectedLoc.includes('kondapur');
+      const isTellapur = selectedLoc.includes('tellapur');
+      const isFinancialDistrict = selectedLoc.includes('financial');
+      const isBachupally = selectedLoc.includes('bachupally');
+      const isMumbai = selectedLoc.includes('mumbai');
+      const isSrisailam = selectedLoc.includes('srisailam');
+      const isWarangal = selectedLoc.includes('warangal');
+
+      if (isKukatpally && (itemLoc.includes('kukatpally') || itemLoc.includes('kphb') || itemLocation.includes('kukatpally') || itemTitle.includes('kukatpally'))) {
+        // match Kukatpally
+      } else if (isHafeezpetMiyapur && (itemLoc.includes('hafeezpet') || itemLoc.includes('miyapur') || itemLocation.includes('hafeezpet') || itemLocation.includes('miyapur') || itemTitle.includes('miyapur'))) {
+        // match Hafeezpet & Miyapur
+      } else if (isBangaloreShadnagar && (itemLoc.includes('bangalore') || itemLoc.includes('shadnagar') || itemLoc.includes('shad nagar') || itemLocation.includes('bangalore') || itemTitle.includes('shad nagar') || itemTitle.includes('shadnagar'))) {
+        // match Bangalore Highway & Shadnagar
+      } else if (isKokapetNeopolis && (itemLoc.includes('kokapet') || itemLoc.includes('neopolis') || itemLocation.includes('kokapet') || itemLocation.includes('neopolis') || itemTitle.includes('neopolis'))) {
+        // match Kokapet & Neopolis
+      } else if (isKondapur && (itemLoc.includes('kondapur') || itemLocation.includes('kondapur') || itemTitle.includes('kondapur'))) {
+        // match Kondapur
+      } else if (isTellapur && (itemLoc.includes('tellapur') || itemLocation.includes('tellapur') || itemTitle.includes('tellapur'))) {
+        // match Tellapur
+      } else if (isFinancialDistrict && (itemLoc.includes('financial') || itemLocation.includes('financial') || itemTitle.includes('financial'))) {
+        // match Financial District
+      } else if (isBachupally && (itemLoc.includes('bachupally') || itemLocation.includes('bachupally') || itemTitle.includes('bachupally'))) {
+        // match Bachupally
+      } else if (isMumbai && (itemLoc.includes('mumbai') || itemLocation.includes('mumbai'))) {
+        // match Mumbai Highway
+      } else if (isSrisailam && (itemLoc.includes('srisailam') || itemLocation.includes('srisailam'))) {
+        // match Srisailam Highway
+      } else if (isWarangal && (itemLoc.includes('warangal') || itemLocation.includes('warangal'))) {
+        // match Warangal Highway
+      } else if (itemLoc === selectedLoc || itemLocation.includes(selectedLoc) || itemTitle.includes(selectedLoc)) {
+        // match direct string
+      } else {
+        return false;
+      }
     }
+
     // BHK
     if (filters.bhk !== 'Any BHK') {
       if (!item.bhk.includes(filters.bhk.replace(' BHK', ''))) {
         return false;
       }
     }
+
     // Possession
     if (filters.possession !== 'Any Possession' && item.possession !== filters.possession) {
       return false;
     }
+
     // Budget
     if (filters.budget === 'under-75l' && item.priceNumeric > 7500000) return false;
     if (filters.budget === '75l-1.5cr' && (item.priceNumeric < 7500000 || item.priceNumeric > 15000000)) return false;
