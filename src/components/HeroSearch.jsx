@@ -48,6 +48,10 @@ export default function HeroSearch({
 
   const localities = [
     'All Localities',
+    'Bangalore Highway',
+    'Mumbai Highway',
+    'Srisailam Highway',
+    'Warangal Highway',
     'Kukatpally / KPHB',
     'Hafeezpet',
     'Tellapur',
@@ -127,7 +131,7 @@ export default function HeroSearch({
           </h1>
 
           <p className="text-sm sm:text-lg text-slate-100 font-medium max-w-2xl mx-auto leading-relaxed drop-shadow">
-            Verified luxury apartments, gated villas, commercial spaces, and HMDA-sanctioned open plots across KPHB, Hafeezpet, Kokapet, and Financial District.
+            Verified luxury apartments, gated villas, commercial spaces, and HMDA-sanctioned open plots across Bangalore Highway, Mumbai Highway, Srisailam Highway, and Warangal Highway.
           </p>
         </div>
 

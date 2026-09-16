@@ -12,7 +12,8 @@ import {
   ChevronLeft, 
   ChevronRight,
   Navigation,
-  Share2
+  Share2,
+  Layout
 } from 'lucide-react';
 import WhatsAppIcon from './WhatsAppIcon';
 
@@ -172,6 +173,68 @@ export default function PropertyModal({ property, onClose, onOpenSiteVisit }) {
               {property.description}
             </p>
           </div>
+
+          {/* 🌟 PROJECT MASTER PLAN & LAYOUT BLUEPRINT SECTION */}
+          {property.masterPlan && (
+            <div className="space-y-4 pt-2 border-t border-slate-200">
+              <div className="flex items-center justify-between">
+                <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                  <Layout className="w-4 h-4 text-emerald-600" />
+                  Project Master Plan & Layout Blueprint
+                </h4>
+                <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                  Approved Layout Sanction
+                </span>
+              </div>
+
+              {/* Master Plan Graphic Blueprint */}
+              <div className="relative aspect-[16/9] bg-slate-950 rounded-2xl overflow-hidden border border-slate-200 shadow-md group">
+                <img
+                  src={property.masterPlanImage || "https://images.unsplash.com/photo-1628624747186-a941c476b7ef?auto=format&fit=crop&w=1200&q=80"}
+                  alt={`${property.title} Master Plan Blueprint`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex items-end p-4 sm:p-6">
+                  <div className="text-white space-y-1">
+                    <div className="text-xs sm:text-sm font-extrabold text-white flex items-center gap-2">
+                      <span>{property.title} - Master Plan Blueprint</span>
+                    </div>
+                    <div className="text-[11px] text-emerald-400 font-semibold">
+                      Total Land: {property.masterPlan.totalPlotArea} • Open Greenery: {property.masterPlan.openSpace}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Master Plan Metrics Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs bg-emerald-50/60 p-4 rounded-2xl border border-emerald-200/60">
+                <div className="space-y-0.5">
+                  <span className="text-slate-500 block text-[11px] font-medium">Total Project Land</span>
+                  <span className="font-extrabold text-slate-900 text-xs sm:text-sm">{property.masterPlan.totalPlotArea}</span>
+                </div>
+                <div className="space-y-0.5">
+                  <span className="text-slate-500 block text-[11px] font-medium">Total Units / Layout</span>
+                  <span className="font-extrabold text-slate-900 text-xs sm:text-sm">{property.masterPlan.totalUnits}</span>
+                </div>
+                <div className="space-y-0.5">
+                  <span className="text-slate-500 block text-[11px] font-medium">Open & Green Space</span>
+                  <span className="font-extrabold text-emerald-700 text-xs sm:text-sm">{property.masterPlan.openSpace}</span>
+                </div>
+                <div className="space-y-0.5">
+                  <span className="text-slate-500 block text-[11px] font-medium">Built-Up Area</span>
+                  <span className="font-bold text-slate-900 text-xs">{property.masterPlan.buildUpArea}</span>
+                </div>
+                <div className="space-y-0.5">
+                  <span className="text-slate-500 block text-[11px] font-medium">Project Phases</span>
+                  <span className="font-bold text-slate-900 text-xs">{property.masterPlan.phases}</span>
+                </div>
+                <div className="space-y-0.5">
+                  <span className="text-slate-500 block text-[11px] font-medium">Layout Design</span>
+                  <span className="font-bold text-slate-900 text-xs">{property.masterPlan.layout}</span>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Amenities Grid */}
           <div>

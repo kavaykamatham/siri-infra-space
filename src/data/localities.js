@@ -64,5 +64,49 @@ export const localities = [
     highlights: ["Silver Oaks & Oakridge Nearby", "ORR Exit 4 & 5 Access", "Clear Title HMDA Gated Layouts", "Fast Developing Social Infrastructure"],
     image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
     propertiesCount: "14+ Projects"
+  },
+  {
+    id: "bangalore-highway",
+    name: "Bangalore Highway",
+    tagline: "Prime Plotted Community with Excellent Highway Connectivity",
+    avgPrice: "₹22,000 - ₹24,000 / sq.yard",
+    growthRate: "+17.3% YoY",
+    description: "Strategic location on Bangalore Highway offering premium villa plots with direct highway access, modern infrastructure, and excellent connectivity. Ideal for peaceful living with easy commute.",
+    highlights: ["Direct Highway Access", "HMDA Approved Gated Layout", "Wide Roads & Underground Utilities", "Bank Loan Approved"],
+    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+    propertiesCount: "1+ Projects"
+  },
+  {
+    id: "mumbai-highway",
+    name: "Mumbai Highway",
+    tagline: "Well-Developed Residential Plots with Prime Location",
+    avgPrice: "₹20,000 - ₹22,000 / sq.yard",
+    growthRate: "+15.8% YoY",
+    description: "Beautifully designed residential plots on Mumbai Highway featuring excellent infrastructure, green spaces, and prime connectivity to major business hubs and educational institutions.",
+    highlights: ["RERA Approved Layout", "Highway Connectivity", "Complete Underground Utilities", "Established Community"],
+    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+    propertiesCount: "1+ Projects"
+  },
+  {
+    id: "srisailam-highway",
+    name: "Srisailam Highway",
+    tagline: "Serene & Scenic Residential Plots Away from City Hustle",
+    avgPrice: "₹18,000 - ₹20,000 / sq.yard",
+    growthRate: "+14.2% YoY",
+    description: "Spacious plots on the scenic Srisailam Highway offering a peaceful environment with excellent infrastructure and easy access to major cities. Perfect for serene living and future growth.",
+    highlights: ["Scenic Highway Location", "RERA Approved", "Full Underground Utilities", "Peaceful Environment"],
+    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+    propertiesCount: "1+ Projects"
+  },
+  {
+    id: "warangal-highway",
+    name: "Warangal Highway",
+    tagline: "Premium Township with Modern Amenities & High Growth Potential",
+    avgPrice: "₹21,000 - ₹23,000 / sq.yard",
+    growthRate: "+16.5% YoY",
+    description: "Premium residential plots on Warangal Highway with modern township amenities, excellent connectivity, and developed infrastructure. An ideal investment for long-term appreciation and comfortable living.",
+    highlights: ["Premium Township Layout", "RERA Approved", "Modern Amenities & Parks", "Bank Loan Approved"],
+    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+    propertiesCount: "1+ Projects"
   }
 ];
